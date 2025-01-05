@@ -5,7 +5,7 @@ This project is a web-based application designed to detect pneumonia from chest 
 
 The application is built using:
 - **Flask** for the backend
-- **HTML, CSS, and JavaScript** for the frontend
+- **Streamlit** for the frontend
 - **PyTorch** for deep learning model inference
 
 ## Features
@@ -27,8 +27,8 @@ pip install -r requirements.txt
 
 ### Key Packages
 - Flask
-- torch (CPU-only version)
-- torchvision (CPU-only version)
+- torch
+- torchvision
 - Pillow
 - numpy
 
@@ -51,14 +51,14 @@ pip install -r requirements.txt
    pip install -r requirements.txt
    ```
 
-4. Download the pre-trained models and place them in the project directory. Ensure the filenames match:
-   - `densenet121_best.pth`
-   - `resnet50_best.pth`
-   - `inception_v3_best.pth`
+4. Make sure the pre-trained models are in the project models directory. Ensure the filenames match:
+   - `models/densenet121_best.pth`
+   - `models/resnet50_best.pth`
+   - `models/inception_v3_best.pth`
 
 5. Run the application:
    ```bash
-   python app.py
+   streamlit run app.py
    ```
 
 6. Open the application in your web browser at `http://127.0.0.1:5000`.
@@ -67,7 +67,7 @@ pip install -r requirements.txt
 ## Usage
 1. Open the web application in your browser.
 2. Upload a chest X-ray image (JPEG or PNG format).
-3. View individual model predictions and the ensemble result.
+3. View the ensemble result.
 
 
 ## Contributing
@@ -76,7 +76,8 @@ Contributions are welcome! Please open an issue or submit a pull request for imp
 ## Acknowledgments
 - Pre-trained models were sourced from the PyTorch library.
 - Inspired by medical image analysis research and applications.
-
+- The dataset used for training and fine-tuning the models is of kaggle of whose link is provded below:
+https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 ---
 
 
