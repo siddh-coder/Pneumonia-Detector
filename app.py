@@ -98,4 +98,7 @@ if uploaded_file:
     if st.button("Classify Image"):
         with st.spinner("Classifying..."):
             ensemble_class, individual_predictions = predict_ensemble(uploaded_file)
-            st.success(f"Ensemble Prediction: {ensemble_class}")
+            if(ensemble_class == "Pneumonia"):
+                st.success(f"Prediction: The patient has {ensemble_class}")
+            else:
+                st.success(f"Prediction: The patient is Normal")
