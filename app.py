@@ -78,61 +78,18 @@ def predict_ensemble(image):
         predictions.append(prediction)
 
     ensemble_prediction = np.bincount(predictions).argmax()
-    return class_labels[ensemble_prediction]
-
-# Custom CSS for animations and background
-st.markdown("""
-    <style>
-        @keyframes gradientBackground {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        body {
-            background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb);
-            background-size: 200% 200%;
-            animation: gradientBackground 15s ease infinite;
-            color: #333333;
-        }
-        .title {
-            color: #ffffff;
-            font-size: 3em;
-            font-weight: bold;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        .description {
-            font-size: 1.2em;
-            color: #ffffff;
-            margin-bottom: 20px;
-        }
-        .uploaded-image {
-            border: 5px solid #ffffff;
-            border-radius: 10px;
-            margin-top: 10px;
-        }
-    </style>
-""", unsafe_allow_html=True)
+    return class_labels[ensemble_prediction], predictions
 
 # Streamlit UI
-st.markdown('<h1 class="title">PneumaScan - Pneumonia Detection App</h1>', unsafe_allow_html=True)
-st.markdown('<p class="description">This app detects pneumonia from chest X-ray images. Upload an X-ray image below to get started!</p>', unsafe_allow_html=True)
+st.title("PneumaScan - Pneumonia Detection App")
+st.write("This app uses the x-ray image of the patient to detect whether the patient has Pneumonia or not. Upload an image to get the prediction!")
 
-uploaded_file = st.file_uploader("Upload an X-ray image (JPEG/PNG)", type=["jpeg", "jpg", "png"])
+uploaded_file = st.file_uploader("Upload an image", type=["jpeg", "jpg", "png"])
 if uploaded_file:
-    # Display the uploaded image with custom styling
-    st.markdown(
-        f"""
-        <div style="text-align: center; margin-top: 20px;">
-            <img src="data:image/jpeg;base64,{uploaded_file.getvalue().decode('latin1')}" 
-                 style="border: 5px solid #ffffff; border-radius: 10px; max-width: 100%; height: auto;" 
-                 alt="Uploaded Image">
-            <p style="color: #ffffff; font-weight: bold; font-size: 1.2em;">Uploaded Image</p>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
 
-    if st.button("Get Prediction"):
-        with st.spinner("Analyzing..."):
-            ensemble_class = predict_ensemble(uploaded_file)
-            st.success(f"Prediction: The X-ray indicates {ensemble_class}.")
+    if st.button("Classify Image"):
+        with st.spinner("Classifying..."):
+            ensemble_class, individual_predictions = predict_ensemble(uploaded_file)
+            st.success(f"Ensemble Prediction: {ensemble_class}")
+            st.write(f"Individual Predictions: {individual_predictions}")
