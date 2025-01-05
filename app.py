@@ -5,6 +5,20 @@ from torchvision import models, transforms
 from PIL import Image
 import numpy as np
 
+st.set_page_config(
+    page_title="PneumaScan",
+    page_icon="🩺",
+    layout="centered",
+    initial_sidebar_state="auto",
+    theme={
+        "primaryColor": "#1f77b4",  # Blue
+        "backgroundColor": "#f0f8ff",  # Light blue
+        "secondaryBackgroundColor": "#e6f2ff",  # Slightly darker blue
+        "textColor": "#000000",  # Black
+        "font": "sans serif",  # Optional
+    },
+)
+
 # Define the device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -92,4 +106,3 @@ if uploaded_file:
         with st.spinner("Classifying..."):
             ensemble_class, individual_predictions = predict_ensemble(uploaded_file)
             st.success(f"Ensemble Prediction: {ensemble_class}")
-            st.write(f"Individual Predictions: {individual_predictions}")
