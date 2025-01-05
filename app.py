@@ -81,8 +81,8 @@ def predict_ensemble(image):
     return class_labels[ensemble_prediction], predictions
 
 # Streamlit UI
-st.title("Ensemble Image Classification")
-st.write("Upload an image to classify it using an ensemble of models.")
+st.title("PneumaScan - Pneumonia Detection App")
+st.write("Upload an image to classify it.")
 
 uploaded_file = st.file_uploader("Upload an image", type=["jpeg", "jpg", "png"])
 if uploaded_file:
