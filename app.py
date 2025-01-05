@@ -93,7 +93,7 @@ st.write("This app uses the x-ray image of the patient to detect whether the pat
 
 uploaded_file = st.file_uploader("Upload an image", type=["jpeg", "jpg", "png"])
 if uploaded_file:
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
+    st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
 
     if st.button("Classify Image"):
         with st.spinner("Classifying..."):
