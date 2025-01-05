@@ -10,9 +10,9 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 # Define the paths to your pre-trained models
 model_paths = {
-    "densenet121": "densenet121_best.pth",
-    "resnet50": "resnet50_best.pth",
-    "inception_v3": "inception_v3_best.pth",
+    "densenet121": "models/densenet121_best.pth",
+    "resnet50": "models/resnet50_best.pth",
+    "inception_v3": "models/inception_v3_best.pth",
 }
 
 # Define the class labels
