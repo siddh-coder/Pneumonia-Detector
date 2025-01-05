@@ -16,5 +16,5 @@ RUN pip3 install torch torchvision --index-url https://download.pytorch.org/whl/
 EXPOSE 5000
 
 # Define the command to run the application
-CMD ["python", "app.py"]
+CMD ["python3", "app.py"]
 
