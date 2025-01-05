@@ -10,6 +10,8 @@ COPY . /app
 # Install required dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
+RUN conda install pytorch torchvision cpuonly -c pytorch
+
 # Expose the port the app runs on
 EXPOSE 5000
 
