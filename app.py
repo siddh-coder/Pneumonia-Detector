@@ -119,9 +119,20 @@ st.markdown('<p class="description">This app detects pneumonia from chest X-ray 
 
 uploaded_file = st.file_uploader("Upload an X-ray image (JPEG/PNG)", type=["jpeg", "jpg", "png"])
 if uploaded_file:
-    st.image(uploaded_file, caption="Uploaded Image", use_column_width=True, output_format="JPEG", classes="uploaded-image")
+    # Display the uploaded image with custom styling
+    st.markdown(
+        f"""
+        <div style="text-align: center; margin-top: 20px;">
+            <img src="data:image/jpeg;base64,{uploaded_file.getvalue().decode('latin1')}" 
+                 style="border: 5px solid #ffffff; border-radius: 10px; max-width: 100%; height: auto;" 
+                 alt="Uploaded Image">
+            <p style="color: #ffffff; font-weight: bold; font-size: 1.2em;">Uploaded Image</p>
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
-    if st.button("Classify Image"):
+    if st.button("Get Prediction"):
         with st.spinner("Analyzing..."):
             ensemble_class = predict_ensemble(uploaded_file)
             st.success(f"Prediction: The X-ray indicates {ensemble_class}.")
