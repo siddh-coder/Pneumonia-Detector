@@ -9,14 +9,7 @@ st.set_page_config(
     page_title="PneumaScan",
     page_icon="🩺",
     layout="centered",
-    initial_sidebar_state="auto",
-    theme={
-        "primaryColor": "#1f77b4",  # Blue
-        "backgroundColor": "#f0f8ff",  # Light blue
-        "secondaryBackgroundColor": "#e6f2ff",  # Slightly darker blue
-        "textColor": "#000000",  # Black
-        "font": "sans serif",  # Optional
-    },
+    initial_sidebar_state="auto"
 )
 
 # Define the device
