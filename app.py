@@ -88,8 +88,6 @@ def predict_ensemble(image):
     return class_labels[ensemble_prediction], predictions
 
 # Streamlit UI
-st.title("🩺PneumaScan🩻")
-st.header("🤒Pneumonia Detection App🫁")
 st.markdown("<h1 style='text-align: center; color: black;'>🩺PneumaScan🩻</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='text-align: center; color: grey;'>🤒Pneumonia Detection App🫁</h2>", unsafe_allow_html=True)
 st.write("This app uses the x-ray image of the patient to detect whether the patient has Pneumonia or not. Upload an image to get the prediction!")
