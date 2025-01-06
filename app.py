@@ -105,9 +105,8 @@ def is_xray_image(image):
 
     # Conditions for determining if it's likely an X-ray
     is_grayscale = max_diff < 30  # Allow small differences
-    is_reasonably_bright = 50 < brightness < 200  # Typical brightness range for X-rays
 
-    return is_grayscale and is_reasonably_bright
+    return is_grayscale
 
 # Update the Streamlit UI with validation
 uploaded_file = st.file_uploader("Upload an image", type=["jpeg", "jpg", "png"])
