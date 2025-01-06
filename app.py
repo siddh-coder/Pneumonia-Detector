@@ -91,14 +91,33 @@ def predict_ensemble(image):
 st.title("PneumaScan - Pneumonia Detection App")
 st.write("This app uses the x-ray image of the patient to detect whether the patient has Pneumonia or not. Upload an image to get the prediction!")
 
+# Function to validate whether the image is a chest X-ray
+def is_xray_image(image):
+    image = Image.open(image).convert("RGB")  # Ensure the image is RGB
+    grayscale_image = image.convert("L")  # Convert to grayscale
+
+    # Calculate average brightness (mean pixel value)
+    brightness = np.array(grayscale_image).mean()
+
+    # Check if the image is predominantly grayscale
+    rgb_diff = np.array(image) - np.array(grayscale_image)[:, :, None]
+    max_diff = np.max(np.abs(rgb_diff))
+
+    # Conditions for determining if it's likely an X-ray
+    is_grayscale = max_diff < 30  # Allow small differences
+    is_reasonably_bright = 50 < brightness < 200  # Typical brightness range for X-rays
+
+    return is_grayscale and is_reasonably_bright
+
+# Update the Streamlit UI with validation
 uploaded_file = st.file_uploader("Upload an image", type=["jpeg", "jpg", "png"])
 if uploaded_file:
     st.image(uploaded_file, caption="Uploaded Image", use_container_width=True)
 
     if st.button("Classify Image"):
-        with st.spinner("Classifying..."):
-            ensemble_class, individual_predictions = predict_ensemble(uploaded_file)
-            if(ensemble_class == "Pneumonia"):
-                st.success(f"Prediction: The patient has {ensemble_class}")
+        with st.spinner("Validating..."):
+            if is_xray_image(uploaded_file):
+                ensemble_class, individual_predictions = predict_ensemble(uploaded_file)
+                st.success(f"Prediction: {ensemble_class}")
             else:
-                st.success(f"Prediction: The patient is Normal")
+                st.error("Error: The uploaded image does not appear to be a valid chest X-ray.")
