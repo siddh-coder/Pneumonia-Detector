@@ -88,7 +88,7 @@ def predict_ensemble(image):
     return class_labels[ensemble_prediction], predictions
 
 # Streamlit UI
-st.markdown("#PneumaScan🩻")
+st.markdown("#PneumaScan")
 st.subheader("🫁Pneumonia Detection App🩺", divider="green")
 st.write("This app uses the x-ray image of the patient to detect whether the patient has Pneumonia or not. Upload an image to get the prediction!")
 
