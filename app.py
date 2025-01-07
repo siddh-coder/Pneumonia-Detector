@@ -89,7 +89,7 @@ def predict_ensemble(image):
 
 # Streamlit UI
 st.markdown("#PneumaScan🩻")
-st.markdown("##🫁Pneumonia Detection App🩺", divider="green")
+st.subheader("🫁Pneumonia Detection App🩺", divider="green")
 st.write("This app uses the x-ray image of the patient to detect whether the patient has Pneumonia or not. Upload an image to get the prediction!")
 
 # Function to validate whether the image is a chest X-ray
