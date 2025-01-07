@@ -12,6 +12,14 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
+bg = """<style>[data-testid="stAppViewContainer"]{
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 200% 200%;
+    animation: gradient-animation 15s ease infinite;
+    }</style>"""
+
+st.markdown(bg, unsafe_allow_html=True)
+
 # Define the device
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
