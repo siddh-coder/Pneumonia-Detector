@@ -16,7 +16,25 @@ bg = """<style>[data-testid="stAppViewContainer"]{
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 200% 200%;
     animation: gradient-animation 15s ease infinite;
-    }</style>"""
+    }
+    @keyframes gradient-animation {
+    0% {
+        background-position: 0% 50%;
+    }
+    25% {
+        background-position: 50% 100%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    75% {
+        background-position: 50% 0%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+    </style>"""
 
 st.markdown(bg, unsafe_allow_html=True)
 
