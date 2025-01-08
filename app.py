@@ -13,7 +13,7 @@ st.set_page_config(
 )
 
 bg = """<style>[data-testid="stAppViewContainer"]{
-    background: linear-gradient(-45deg, #ffd1b5, #ffaac8, #89d3f8, #a8f7d1);
+    background: linear-gradient(-45deg, #ffe0cc, #ffccd5, #cce7ff, #d9f8e6);
     background-size: 200% 200%;
     animation: gradient-animation 15s ease infinite;
     }
